@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Genre Detail - {{ genre.name }}{% endblock %}
+
+{% block content %}
+    <h2>{{ genre.name }}</h2>
+    <p>{{ genre.description }}</p>
+    <h3>Movies in this Genre</h3>
+    <ul class="list-group">
+        {% for movie in movies %}
+            <li class="list-group-item"><a href="{% url 'movie_detail' movie.id %}">{{ movie.title }}</a></li>
+        {% endfor %}
+    </ul>
+    <a class="btn btn-warning mt-3" href="{% url 'update_genre' genre.id %}">Update Genre</a>
+{% endblock %}
